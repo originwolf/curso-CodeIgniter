@@ -1,4 +1,4 @@
-const BASE_URL = "localhost/CodeIgniter"
+const BASE_URL = "http://localhost/CodeIgniter/"
 
 function clearErrors() {
     $(".has-error").removeClass("has-error")

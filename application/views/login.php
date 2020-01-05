@@ -4,7 +4,7 @@
 					<div class="col-lg-offset-3 col-lg-6 text-center">
 						<div class="section-title">
                             <h2>Login</h2>
-                            <form id="login_form" method="post" action="<?=base_url()?>restrict/ajax_login">
+                            <form id="login_form" method="post">
                                 <div class=row>
                                     <div class="col-lg-12">
                                         <div class="form-group">

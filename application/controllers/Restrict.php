@@ -12,16 +12,31 @@ class Restrict extends CI_Controller {
 		//echo password_hash("123456",PASSWORD_DEFAULT);
 		// $this->load->model("users_model");
 		// print_r($this->users_model->get_user_data("pmartins"));
-		$data = array(
-			"scripts" => array(
-				"util.js",
-				"login.js"
-			)
-		);
-		$this->template->show('login', $data);
+
+		if ($this->session->userdata("user_id")) {
+			$this->template->show("restrict.php");
+		} else {
+			$data = array(
+				"scripts" => array(
+					"util.js",
+					"login.js"
+				)
+			);
+			$this->template->show("login.php", $data);
+		}
+	}
+
+	public function logoff() {
+		$this->session->sess_destroy();
+		header("Location: ".base_url()."restrict");
 	}
 
 	public function ajax_login() {
+
+		if (!$this->input->is_ajax_request()) {
+			exit("Nenhum acesso de script direto permitido!");
+		}
+
 		$json = array();
 		$json["status"] = 1;
 		$json["error_list"] = array();
